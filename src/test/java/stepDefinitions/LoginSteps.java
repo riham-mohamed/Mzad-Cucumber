@@ -1,14 +1,19 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.*;
+import org.openqa.selenium.WebDriver;
+import pages.LoginPage;
 
 public class LoginSteps
 {
-    @Given("user is on login page")
-    public void user_is_on_login_page()
-    {
+    WebDriver driver = Hooks.driver;
 
-        System.out.println("User navigates to the login page");
+    @Given("user open login page")
+    public void user_open_login_page()
+    {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickOnProfileDDL();
+        loginPage.clickOnLoginLink();
     }
 
     @When("select country code from DDL")
