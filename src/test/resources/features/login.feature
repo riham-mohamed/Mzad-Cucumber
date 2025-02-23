@@ -3,8 +3,7 @@ Feature: Login Test Cases
 Scenario: Check Login function with valid credentials
 
   Given user open login page
-  When select country code from DDL
-  And user enters mobile number
+  When user enters mobile number
   And press next button
   And user enters OTP
   And press Next button
@@ -12,8 +11,7 @@ Scenario: Check Login function with valid credentials
 
 Scenario Outline: Check Login function with invalid credentials
   Given user open login page
-  When select country code from DDL
-  And user enters <mobile number>
+  When user enters <mobile number>
   And press next button
   And user enters <OTP>
   And press next button

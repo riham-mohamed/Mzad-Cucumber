@@ -34,16 +34,13 @@ public class MethodHandles
                         ExpectedConditions.visibilityOfElementLocated(locator)));
     }
 
-    protected void click(By locator, int time)
+    protected void click(By locator)
     {
-        explicitWait(locator, time);
         webElement(locator).click();
     }
 
-    protected void sendKeys(By locator, String text , int time)
+    protected void sendKeys(By locator, String text)
     {
-        explicitWait(locator, time);
-        webElement(locator).sendKeys(text);
+       webElement(locator).sendKeys(text);
     }
-
 }

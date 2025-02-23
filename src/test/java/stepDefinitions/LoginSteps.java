@@ -3,35 +3,31 @@ package stepDefinitions;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
+import pages.URLPage;
 
 public class LoginSteps
 {
     WebDriver driver = Hooks.driver;
+    URLPage urlPage = new URLPage(driver);
+    LoginPage loginPage;
 
     @Given("user open login page")
     public void user_open_login_page()
     {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickOnProfileDDL();
-        loginPage.clickOnLoginLink();
+        urlPage.clickOnProfileDDL();
+        loginPage = urlPage.clickOnLoginLink();
     }
 
-    @When("select country code from DDL")
-    public void select_country_code_from_DDL()
-    {
-        System.out.println("select country code from DDL");
-    }
-
-    @And("user enters mobile number")
+    @When("user enters mobile number")
     public void user_enters_mobile_number()
     {
-        System.out.println("user enters mobile number");
+        loginPage.insertMobile("14755555");
     }
 
     @And("press next button")
     public void press_next_button()
     {
-        System.out.println("press next button");
+        loginPage.clickOnNextButton();
     }
 
     @And("user enters OTP")

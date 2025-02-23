@@ -11,19 +11,20 @@ public class LoginPage extends MethodHandles
         super(driver);
     }
 
-    private final By profileDDL = By.cssSelector(".all_action_dropdown");
+    private final By mobileField = By.id("phone");
 
-    private final By loginLink =  By.xpath("(//a[@class='logreg'])[1]");
+    private final By nextButton = By.xpath("//button[@class='button']");
 
-    public void clickOnProfileDDL()
+    public void insertMobile(String mobilenumber)
     {
-        click(profileDDL,5);
-
-    }
-    public void clickOnLoginLink()
-    {
-      click(loginLink,5);
+        explicitWait(mobileField,5);
+        sendKeys(mobileField,mobilenumber);
     }
 
+    public void clickOnNextButton()
+    {
+       explicitWait(nextButton,5);
+       click(nextButton);
+    }
 
 }
