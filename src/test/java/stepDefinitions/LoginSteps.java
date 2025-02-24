@@ -33,13 +33,13 @@ public class LoginSteps
     @And("user enters OTP")
     public void user_enters_OTP()
     {
-        System.out.println("user enters OTP");
+        loginPage.insertOTP("123456");
     }
 
     @And("press Next button")
     public void press_Next_button()
     {
-        System.out.println("press Next button");
+        loginPage.clickOnNextButton();
     }
 
     @Then("user is navigated to homepage")

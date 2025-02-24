@@ -6,7 +6,7 @@ Scenario: Check Login function with valid credentials
   When user enters mobile number
   And press next button
   And user enters OTP
-  And press Next button
+  And press next button
   Then user is navigated to homepage
 
 Scenario Outline: Check Login function with invalid credentials
