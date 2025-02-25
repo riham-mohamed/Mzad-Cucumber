@@ -3,7 +3,6 @@ package utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -19,7 +18,7 @@ public class MethodHandles
         this.driver=driver;
     }
 
-    private WebElement webElement(By locator)
+    protected WebElement webElement(By locator)
     {
         return driver.findElement(locator);
     }
@@ -27,11 +26,10 @@ public class MethodHandles
     protected void explicitWait(By locator, int time)
     {
         wait = new WebDriverWait(driver, Duration.ofSeconds(time));
-        wait.until(ExpectedConditions.and
-                (ExpectedConditions.visibilityOf(webElement(locator)),
-                        ExpectedConditions.presenceOfElementLocated(locator),
-                        ExpectedConditions.elementToBeClickable(locator),
-                        ExpectedConditions.visibilityOfElementLocated(locator)));
+        wait.until(driver -> {
+        WebElement element = webElement(locator);
+        return element.isDisplayed() && element.isEnabled();
+        });
     }
 
     protected void click(By locator)
@@ -42,5 +40,11 @@ public class MethodHandles
     protected void sendKeys(By locator, String text)
     {
        webElement(locator).sendKeys(text);
+    }
+
+    protected String getText(By locator)
+    {
+        webElement(locator).getText();
+        return null;
     }
 }

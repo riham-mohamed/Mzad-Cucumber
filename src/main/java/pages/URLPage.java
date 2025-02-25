@@ -17,19 +17,11 @@ public class URLPage extends MethodHandles
 
     private final By loginLink =  By.cssSelector("a.logreg");
 
-    public void clickOnProfileDDL() {
-        int attempts = 0;
-        while (attempts < 3) {
-            try {
-                explicitWait(profileDDL,10);
-                click(profileDDL);
-                return;
-            } catch (StaleElementReferenceException e) {
-                attempts++;
-            }
-        }
-        throw new RuntimeException("Failed to click on Profile Dropdown after multiple attempts");
-    }
+    public void clickOnProfileDDL()
+    {
+        explicitWait(profileDDL,10);
+        click(profileDDL);
+   }
 
     public LoginPage clickOnLoginLink()
     {

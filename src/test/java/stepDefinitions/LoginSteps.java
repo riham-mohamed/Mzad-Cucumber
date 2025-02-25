@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
+import pages.HomePage;
 import pages.LoginPage;
 import pages.URLPage;
 
@@ -10,6 +11,7 @@ public class LoginSteps
     WebDriver driver = Hooks.driver;
     URLPage urlPage = new URLPage(driver);
     LoginPage loginPage;
+    HomePage homePage;
 
     @Given("user open login page")
     public void user_open_login_page()
@@ -24,8 +26,8 @@ public class LoginSteps
         loginPage.insertMobile("14755555");
     }
 
-    @And("press next button")
-    public void press_next_button()
+    @And("press Next button")
+    public void press_Next_button()
     {
         loginPage.clickOnNextButton();
     }
@@ -36,14 +38,15 @@ public class LoginSteps
         loginPage.insertOTP("123456");
     }
 
-    @And("press Next button")
-    public void press_Next_button()
+    @And("press next button")
+    public void press_next_button()
     {
-        loginPage.clickOnNextButton();
+        homePage = loginPage.Clickonnextbutton();
     }
 
     @Then("user is navigated to homepage")
     public void user_is_navigated_to_homepage() {
-        System.out.println("user is navigated to homepage");
+        String mainHeaderText = homePage.getMainHeadText();
+        System.out.println("Main Header Text: " + mainHeaderText);
     }
 }

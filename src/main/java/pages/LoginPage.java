@@ -1,14 +1,8 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.MethodHandles;
-
-import java.time.Duration;
 
 public class LoginPage extends MethodHandles
 {
@@ -35,19 +29,17 @@ public class LoginPage extends MethodHandles
 
     private final By otpField = By.xpath("(//*[@class='phone_code'])[1]");
 
-    public void insertOTP(String OTPfield)
+    public void insertOTP(String OTPFieldValue)
     {
-        int attempts = 0;
-        while (attempts < 3) {
-            try {
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-                WebElement otpElement = wait.until(ExpectedConditions.presenceOfElementLocated(otpField));
-                otpElement.sendKeys(OTPfield);
-                return;
-            } catch (StaleElementReferenceException e) {
-                attempts++;
-            }
-        }
-        throw new RuntimeException("Failed to click on Profile Dropdown after multiple attempts");
+        explicitWait(otpField,10);
+        sendKeys(otpField,OTPFieldValue);
     }
+
+    public HomePage Clickonnextbutton()
+    {
+        explicitWait(nextButton,5);
+        click(nextButton);
+        return new HomePage(driver);
+    }
+
 }
