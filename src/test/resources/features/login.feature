@@ -9,6 +9,18 @@ Scenario: Check Login function with valid credentials
   And press next button
   Then user is navigated to homepage
 
+ Scenario: Check Login with empty mobile number
+  Given user open login page
+  When user leave mobile number empty
+  Then next button is disabled
+
+ Scenario: Check Login with wrong OTP
+  Given user open login page
+  When user enters mobile number
+  And press next button
+  And user enters wrong OTP
+  Then press next button and check Error message
+
 Scenario Outline: Check Login function with invalid credentials
   Given user open login page
   When user enters <mobile number>

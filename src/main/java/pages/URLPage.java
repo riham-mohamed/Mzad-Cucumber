@@ -17,15 +17,15 @@ public class URLPage extends MethodHandles
 
     private final By loginLink =  By.cssSelector("a.logreg");
 
-    public void clickOnProfileDDL()
+    public void clickOnProfileDDL() throws InterruptedException
     {
-        explicitWait(profileDDL,10);
+        explicitWait(profileDDL,60);
         click(profileDDL);
    }
 
     public LoginPage clickOnLoginLink()
     {
-      explicitWait(loginLink,5);
+      explicitWait(loginLink,60);
       click(loginLink);
       return new LoginPage(driver);
     }

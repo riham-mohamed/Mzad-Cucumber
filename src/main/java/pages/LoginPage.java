@@ -15,6 +15,25 @@ public class LoginPage extends MethodHandles
 
     private final By nextButton = By.xpath("//button[@class='button']");
 
+    public void checkMobileFieldDisplay()
+    {
+     explicitWait(mobileField,10);
+    }
+
+    public boolean nextButtonIsDisabled()
+    {
+     webElement(nextButton);
+     return webElement(nextButton).isEnabled();
+    }
+
+    private final By wrongOTPMsg = By.cssSelector(".text-red-500.text-xs.mt-1");
+
+    public String getWrongOTPMessage()
+    {
+        explicitWait(wrongOTPMsg,10);
+        return getText(wrongOTPMsg);
+    }
+
     public void insertMobile(String mobilenumber)
     {
         explicitWait(mobileField,5);
@@ -41,5 +60,4 @@ public class LoginPage extends MethodHandles
         click(nextButton);
         return new HomePage(driver);
     }
-
 }
