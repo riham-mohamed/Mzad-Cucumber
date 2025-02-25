@@ -1,8 +1,6 @@
 package utils;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -30,6 +28,25 @@ public class MethodHandles
         WebElement element = webElement(locator);
         return element.isDisplayed() && element.isEnabled();
         });
+    }
+
+    protected WebElement findElementWithRetry(By locator)
+    {
+        int attempts = 0;
+        WebElement element = null;
+        while (attempts < 3) {
+            try {
+                element = driver.findElement(locator);
+                return element;
+            } catch (StaleElementReferenceException e) {
+                System.out.println("Retrying due to stale element... Attempt " + (attempts + 1));
+            } catch (NoSuchElementException e) {
+                System.out.println("Element not found: " + locator.toString());
+                break;
+            }
+            attempts++;
+        }
+        return null;
     }
 
     protected void click(By locator)

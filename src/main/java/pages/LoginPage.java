@@ -15,6 +15,17 @@ public class LoginPage extends MethodHandles
 
     private final By nextButton = By.xpath("//button[@class='button']");
 
+    public void checkMobileFieldDisplay()
+    {
+     explicitWait(mobileField,10);
+    }
+
+    public boolean nextButtonIsDisabled()
+    {
+     webElement(nextButton);
+     return webElement(nextButton).isEnabled();
+    }
+
     public void insertMobile(String mobilenumber)
     {
         explicitWait(mobileField,5);
@@ -41,5 +52,4 @@ public class LoginPage extends MethodHandles
         click(nextButton);
         return new HomePage(driver);
     }
-
 }
