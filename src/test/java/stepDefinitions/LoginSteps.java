@@ -86,4 +86,25 @@ public class LoginSteps
        String actualwrongOTP = loginPage.getWrongOTPMessage();
        assertEquals("The user credentials were incorrect.",actualwrongOTP);
     }
+
+    // Check Login function with invalid credentials Steps
+    @When("user enters {string}")
+    public void user_enters(String invalidmobilenumber)
+    {
+        loginPage.insertMobile(invalidmobilenumber);
+    }
+
+    @And("again user enters {string}")
+    public void again_user_enters(String invalidOTP)
+    {
+        loginPage.insertOTP(invalidOTP);
+    }
+
+    @Then("Error message is displayed")
+    public void Error_message_is_displayed() throws InterruptedException {
+        loginPage.clickOnNextButton();
+        Thread.sleep(500);
+        String actualwrongOTP = loginPage.getWrongOTPMessage();
+        assertEquals("The user credentials were incorrect.",actualwrongOTP);
+    }
 }

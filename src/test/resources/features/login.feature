@@ -23,13 +23,13 @@ Feature: Login Test Cases
 
  Scenario Outline: Check Login function with invalid credentials
   Given user open login page
-  When user enters <mobile number>
+  When user enters <invalidmobilenumber>
   And press next button
-  And user enters <OTP>
+  And again user enters <invalidOTP>
   And press next button
   Then Error message is displayed
 
   Examples:
-  |mobile number|OTP|
-  |238950|166473|
-  |238951|166472|
+  |invalidmobilenumber|invalidOTP|
+  |"14755555"|"123455"|
+  |"14755556"|"123456"|
