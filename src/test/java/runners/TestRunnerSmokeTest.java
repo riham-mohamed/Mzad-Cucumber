@@ -7,8 +7,10 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(features="src/test/resources/features",glue={"stepDefinitions"},
         monochrome = true,
-        plugin = {"pretty", "html:target/cucumber-reports.html"}
-        )
-class TestRunner
+        plugin = {"pretty", "html:target/cucumber-reports.html"},
+        tags = "@smoke"
+)
+
+public class TestRunnerSmokeTest
 {
 }

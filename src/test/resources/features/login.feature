@@ -12,8 +12,8 @@ Feature: Login Test Cases
   And user enters wrong OTP
   Then press next button and check Error message
 
+@smoke
  Scenario: Check Login function with valid credentials
-
   Given user open login page
   When user enters mobile number
   And press next button
